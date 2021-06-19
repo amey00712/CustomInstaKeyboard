@@ -6,29 +6,25 @@
 //
 
 import UIKit
+import StoreKit
 
-class SubscriptionPage: UIViewController {
+class SubscriptionPage: UIViewController,SKPaymentTransactionObserver {
 
+    let ProductID = "com.mobiledev.instafont.productid"
+    
     @IBOutlet weak var continueBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        SKPaymentQueue.default().add(self)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func `continue`(_ sender: Any) {
         
-        let receiptURL = Bundle.main.appStoreReceiptURL
+       /* let receiptURL = Bundle.main.appStoreReceiptURL
         let receipt = NSData(contentsOf: receiptURL!)
         let _: [String: Any] = [
             //"receipt-data": receipt!.base64EncodedString(options: []),
@@ -39,21 +35,28 @@ class SubscriptionPage: UIViewController {
 
         let stringURL = "https://\(appleServer).itunes.apple.com/verifyReceipt"
 
-        print("Loading user receipt: \(stringURL)...")
-
-//        Alamofire.request(stringURL, method: .post, parameters: requestContents, encoding: JSONEncoding.default)
-//            .responseJSON { response in
-//                if let value = response.result.value as? NSDictionary {
-//                    print(value)
-//                } else {
-//                    print("Receiving receipt from App Store failed: \(response.result)")
-//                }
-//        }
+        print("Loading user receipt: \(stringURL)...") */
         
+        if SKPaymentQueue.canMakePayments(){
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = ProductID
+            SKPaymentQueue.default().add(paymentRequest)
+        }else{
+            print("User unable to make payments")
+        }
+
+
         
     }
     
-    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for transaction in transactions{
+            if transaction.transactionState == .purchased{
+                
+            }
+        }
+    }
     
     @IBAction func privacy(_ sender: Any) {
         

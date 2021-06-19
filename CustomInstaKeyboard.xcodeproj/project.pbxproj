@@ -16,6 +16,7 @@
 		BA51A6BF2657D96E003D71CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA51A6BE2657D96E003D71CE /* Constants.swift */; };
 		BA51A6C12657D975003D71CE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA51A6C02657D975003D71CE /* Extensions.swift */; };
 		BA51A6C32657D97D003D71CE /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA51A6C22657D97D003D71CE /* Keyboard.xib */; };
+		BA935570267E3D5E009A7210 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA93556F267E3D5E009A7210 /* StoreKit.framework */; };
 		BAE992C42652B6F70054DA2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE992C32652B6F70054DA2B /* AppDelegate.swift */; };
 		BAE992C62652B6F70054DA2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE992C52652B6F70054DA2B /* SceneDelegate.swift */; };
 		BAE992C82652B6F70054DA2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE992C72652B6F70054DA2B /* ViewController.swift */; };
@@ -59,6 +60,7 @@
 		BA51A6BE2657D96E003D71CE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA51A6C02657D975003D71CE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BA51A6C22657D97D003D71CE /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
+		BA93556F267E3D5E009A7210 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BAE992C02652B6F70054DA2B /* CustomInstaKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomInstaKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE992C32652B6F70054DA2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE992C52652B6F70054DA2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA935570267E3D5E009A7210 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,12 +102,21 @@
 			path = LPKeyboard;
 			sourceTree = "<group>";
 		};
+		BA93556E267E3D5E009A7210 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA93556F267E3D5E009A7210 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BAE992B72652B6F70054DA2B = {
 			isa = PBXGroup;
 			children = (
 				BAE992C22652B6F70054DA2B /* CustomInstaKeyboard */,
 				BA51A6B42657D93E003D71CE /* LPKeyboard */,
 				BAE992C12652B6F70054DA2B /* Products */,
+				BA93556E267E3D5E009A7210 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
