@@ -8,9 +8,11 @@
 import UIKit
 import StoreKit
 
-class SubscriptionPage: UIViewController,SKPaymentTransactionObserver {
+class SubscriptionPage: UIViewController,SKPaymentTransactionObserver, SKProductsRequestDelegate {
 
     let ProductID = "com.mobiledev.instafont.productid"
+    
+    var myProduct: SKProduct?
     
     @IBOutlet weak var continueBtn: UIButton!
     
@@ -18,7 +20,13 @@ class SubscriptionPage: UIViewController,SKPaymentTransactionObserver {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        SKPaymentQueue.default().add(self)
+        self.fetchProduct()
+    }
+    
+    func fetchProduct(){
+        let request = SKProductsRequest(productIdentifiers: [ProductID])
+        request.delegate = self
+        request.start()
     }
     
 
@@ -37,17 +45,30 @@ class SubscriptionPage: UIViewController,SKPaymentTransactionObserver {
 
         print("Loading user receipt: \(stringURL)...") */
         
+        
+        guard let myProduct = myProduct else {
+            return
+        }
+        
         if SKPaymentQueue.canMakePayments(){
-            let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = ProductID
+            let paymentRequest = SKPayment(product: myProduct)
+            SKPaymentQueue.default().add(self)
             SKPaymentQueue.default().add(paymentRequest)
         }else{
             print("User unable to make payments")
         }
 
-
-        
     }
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+    
+        if let p = response.products.first{
+            myProduct = p
+            print(p.price)
+        }
+    
+    }
+    
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
