@@ -64,7 +64,6 @@ class SubscriptionPage: UIViewController,SKPaymentTransactionObserver, SKProduct
     
         if let p = response.products.first{
             myProduct = p
-            print(p.price)
         }
     
     }
@@ -74,6 +73,12 @@ class SubscriptionPage: UIViewController,SKPaymentTransactionObserver, SKProduct
         
         for transaction in transactions{
             if transaction.transactionState == .purchased{
+                
+            }else if transaction.transactionState == .failed{
+                
+            }else if transaction.transactionState == .purchasing{
+                
+            }else if transaction.transactionState == .restored{
                 
             }
         }
